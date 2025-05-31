@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERO Hub</title>
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Global Reset & Base Styles --- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header Styling --- */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- Main Content Area --- */
+        main {
+            flex-grow: 1;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- Link Group Grid --- */
+        .link-groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem; /* Increased gap */
+        }
+
+        /* --- Link Group Card Styling --- */
+        .link-group {
+            background-color: #fff;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem 2rem; /* More padding */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .link-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .link-group h2 {
+            font-size: 1.6rem; /* Slightly larger group title */
+            font-weight: 600;
+            color: #4a4a4a; /* Darker text for heading */
+            margin-bottom: 1.5rem; /* More space below heading */
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #667eea; /* Accent border */
+            display: flex;
+            align-items: center;
+        }
+
+        .link-group h2 i {
+            margin-right: 0.75em;
+            color: #667eea; /* Icon color matches accent */
+            font-size: 1.3em; /* Slightly larger icon */
+        }
+
+        .link-group ul {
+            list-style-type: none;
+            padding: 0;
+            flex-grow: 1; /* Allows list to take available space */
+        }
+
+        .link-group li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- Link Item Styling --- */
+        .link-item a,
+        .placeholder-item {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem 1.2rem; /* More padding for links */
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9; /* Subtle background for links */
+        }
+
+        .link-item a:hover {
+            background-color: #e9f2ff; /* Light blue on hover */
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .link-item a i,
+        .placeholder-item i {
+            margin-right: 0.75em;
+            color: #888; /* Neutral icon color */
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .link-item a:hover i {
+            color: #667eea; /* Icon color change on hover */
+        }
+
+        /* --- Placeholder Item Styling --- */
+        .placeholder-item {
+            font-style: italic;
+            color: #aaa;
+            border: 2px dashed #ccc; /* Made border dashed for placeholder */
+            justify-content: center; /* Center placeholder text */
+            background-color: transparent;
+            opacity: 0.7;
+        }
+        .placeholder-item:hover {
+            background-color: #f0f0f0;
+            opacity: 1;
+            border-color: #bbb;
+        }
+
+        .placeholder-item i {
+            color: #aaa;
+        }
+
+        /* --- Footer Styling --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background-color: #343a40; /* Dark footer */
+            color: #f8f9fa;
+            font-size: 0.9rem;
+            margin-top: auto; /* Pushes footer to bottom */
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            .link-group h2 {
+                font-size: 1.4rem;
+            }
+            .link-group {
+                padding: 1.2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .link-groups-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            .link-group h2 {
+                font-size: 1.3rem;
+            }
+            .link-item a, .placeholder-item {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* Helper class for new sections if needed */
+        .add-new-section-prompt {
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: #777;
+            font-style: italic;
+            cursor: help; /* Indicates it's informational */
+            margin-top: 2rem;
+        }
+        .add-new-section-prompt i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-cogs"></i> KERO Hub</h1>
+        <p>KERO Assistance: Your personal dashboard for quick access to important pages and resources.</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="link-groups-grid">
+
+                <!-- === MANAGEMENT TOOLS GROUP === -->
+                <section class="link-group">
+                    <h2><i class="fas fa-chart-line"></i> Management Tools</h2>
+                    <ul>
+                        <li class="link-item">
+                            <a href="https://kero-784.github.io/Stock-Transfere/" target="_blank">
+                                <i class="fas fa-exchange-alt"></i> Stock Transfer Application
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="https://kero-784.github.io/tracking-system/" target="_blank">
+                                <i class="fas fa-route"></i> Shipment Tracking System
+                            </a>
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Management Tool
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Management Tool
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Management Tool
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- === BRANCH TOOLS GROUP === -->
+                <section class="link-group">
+                    <h2><i class="fas fa-store"></i> Branch Tools</h2>
+                    <ul>
+                        <li class="link-item">
+                            <a href="https://kero-784.github.io/pricing-app/" target="_blank">
+                                <i class="fas fa-tags"></i> Pricing Management App
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="https://kero-784.github.io/expiry-report/" target="_blank">
+                                <i class="fas fa-calendar-times"></i> Product Expiry Report
+                            </a>
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Branch Tool
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Branch Tool
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Branch Tool
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- === SECTIONS GROUP === -->
+                <section class="link-group">
+                    <h2><i class="fas fa-puzzle-piece"></i> Sections</h2>
+                    <ul>
+                        <li class="link-item">
+                            <a href="https://kero-784.github.io/El_Obour/" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> El Obour Section
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="https://kero-784.github.io/Grocery-/" target="_blank">
+                                <i class="fas fa-shopping-cart"></i> Grocery Section
+                            </a>
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Section Link
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Section Link
+                        </li>
+                        <li class="placeholder-item">
+                            <i class="fas fa-plus-circle"></i> Add New Section Link
+                        </li>
+                    </ul>
+                </section>
+
+
+                <!--
+                HOW TO ADD A NEW LINK GROUP:
+                1. Copy an entire <section class="link-group"> ... </section> block.
+                2. Paste it inside the <div class="link-groups-grid"> ... </div>.
+                3. Change the <h2> heading (text and icon).
+                   - Find icons at: https://fontawesome.com/search?m=free
+                   - Use the class name, e.g., for a cog icon, it's "fas fa-cog".
+                4. Update or add new <li> items.
+                -->
+
+                <!--
+                HOW TO ADD A NEW LINK TO AN EXISTING GROUP:
+                1. Find the <ul> in the desired group.
+                2. You can either:
+                   a) Copy an existing <li class="link-item">...</li>, paste it, and change:
+                      - The href="..." (the URL).
+                      - The text inside the <a> tag (e.g., "My New Link").
+                      - The icon class in the <i> tag (e.g., <i class="fas fa-globe"></i>).
+                   b) Convert a <li class="placeholder-item">...</li>:
+                      - Change class from "placeholder-item" to "link-item".
+                      - Replace the content with an <a> tag like this:
+                        <a href="your-new-link.com" target="_blank">
+                            <i class="fas fa-link"></i> New Link Title
+                        </a>
+                -->
+
+            </div> <!-- /.link-groups-grid -->
+
+            <div class="add-new-section-prompt" title="To add a new link category, copy one of the existing section blocks in the HTML code.">
+                <i class="fas fa-plus-square"></i>
+                Want to add a new category of links? Edit the HTML source!
+                (See comments in the code for guidance)
+            </div>
+
+        </div> <!-- /.container -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 KERO Hub. Built with <i class="fas fa-heart" style="color: #e25555;"></i> & <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.
+        <br>Tip: Bookmark this page for quick access!
+        </p>
+    </footer>
+
+</body>
+</html>
